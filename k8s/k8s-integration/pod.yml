@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: spring-boot-app
+  template:
+    metadata:
+      labels:
+        app: spring-boot-app
+    spec:
+      containers:
+        - name: app
+          image: rajeshpal1991/cart-spring-boot:latest
+          ports:
+            - containerPort: 8080
+          imagePullPolicy: Always
+
+
+#commands
+#  kubectl log podname
+#  docker pull rajeshpal1991/cart-spring-boot:latest
+#  kubectl apply -f pod.yml
+#  kubectl apply -f service.yml
+#  kubectl get pods
+#  kubectl get svc
+# kubectl get deployment
+# kubectl delete deploy k8s-deployment
+#  kubectl get svc
+#  kubectl delete svc k8s-service
+#docker ps
+#docker ps -a
+#docker images
+#docker rmi imagename
